@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Romain Gelin — Business Analytics & Data Science | Private Equity | Global Mindset. Personal portfolio showcasing projects, experience, and certifications." />
+  <title>Romain Gelin — Business Analytics & Data Science</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+
+  <!-- ================================================================
+       NAVIGATION
+       ================================================================ -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a href="#" class="nav-logo" aria-label="Romain Gelin — Home">RG</a>
+
+      <ul class="nav-links" id="nav-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ================================================================
+       HERO
+       ================================================================ -->
+  <section class="hero" id="hero">
+    <!-- Animated world map SVG background -->
+    <div class="hero-bg" aria-hidden="true">
+      <svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <!-- Stylized geographic connection lines -->
+        <g class="map-lines" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.5">
+          <!-- Europe hub -->
+          <path d="M580,280 Q620,240 660,260 Q700,280 720,250" />
+          <path d="M560,300 Q540,320 580,340 Q620,320 640,340" />
+          <!-- Transatlantic -->
+          <path d="M580,280 Q450,200 320,260 Q250,290 200,280" />
+          <path d="M560,300 Q440,340 350,320 Q280,310 220,330" />
+          <!-- To Middle East / Asia -->
+          <path d="M660,260 Q740,240 800,260 Q860,270 920,250" />
+          <path d="M640,340 Q720,360 780,340 Q840,350 900,330" />
+          <path d="M920,250 Q960,260 1000,240 Q1040,230 1060,250" />
+          <!-- Africa -->
+          <path d="M580,340 Q600,400 620,450 Q610,480 620,520" />
+          <path d="M640,340 Q660,380 650,420 Q660,460 640,500" />
+          <!-- South America -->
+          <path d="M320,260 Q340,320 360,380 Q370,430 350,480" />
+          <path d="M350,320 Q360,370 380,420 Q370,460 390,500" />
+          <!-- North lines -->
+          <path d="M580,280 Q560,220 580,180 Q600,150 580,120" />
+          <path d="M200,280 Q180,230 200,190 Q210,160 190,130" />
+          <!-- Australia / Pacific -->
+          <path d="M900,330 Q940,370 960,400 Q990,420 1000,450" />
+          <path d="M1060,250 Q1080,300 1060,350 Q1080,380 1060,410" />
+        </g>
+        <!-- City dots representing key locations -->
+        <g fill="#C9A84C">
+          <!-- Luxembourg -->
+          <circle class="map-dot" cx="590" cy="275" r="3" />
+          <!-- Brussels -->
+          <circle class="map-dot" cx="572" cy="265" r="2.5" />
+          <!-- Madrid -->
+          <circle class="map-dot" cx="545" cy="315" r="2.5" />
+          <!-- London -->
+          <circle class="map-dot" cx="560" cy="250" r="2" />
+          <!-- New York -->
+          <circle class="map-dot" cx="280" cy="280" r="2.5" />
+          <!-- Dubai -->
+          <circle class="map-dot" cx="780" cy="330" r="2" />
+          <!-- Singapore -->
+          <circle class="map-dot" cx="940" cy="380" r="2" />
+          <!-- Hong Kong -->
+          <circle class="map-dot" cx="960" cy="310" r="2" />
+          <!-- São Paulo -->
+          <circle class="map-dot" cx="370" cy="450" r="2" />
+          <!-- Nairobi -->
+          <circle class="map-dot" cx="660" cy="430" r="2" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <p class="hero-tagline">Business Analytics &amp; Data Science · Private Equity · Global Mindset</p>
+        <h1 class="hero-name">Romain Gelin</h1>
+        <p class="hero-description">Building elite capital allocation skills at the intersection of analytics and investing.</p>
+        <div class="hero-ctas">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="assets/Romain_Gelin_CV.pdf" class="btn btn-outline" download>Download CV</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/images/profile.jpg" alt="Romain Gelin — Profile photo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       ABOUT
+       ================================================================ -->
+  <section class="about" id="about">
+    <div class="container">
+      <p class="section-label animate-on-scroll">About</p>
+      <h2 class="section-title animate-on-scroll">Who I Am</h2>
+
+      <div class="about-grid">
+        <div class="about-text animate-on-scroll">
+          <p>I'm a 23-year-old Data Science student with a strong business mindset and a clear ambition: to build a career at the intersection of analytics and investing. I'm currently completing a Master's in Business Analytics and Data Science, where I combine technical curiosity with a growing passion for private equity.</p>
+          <p>My path reflects both resilience and self-awareness. I started in general engineering, recognized the misalignment, and pivoted into business engineering in Brussels — transferring prior coursework and graduating in two years instead of three. That transition led me to finance, which evolved into a broader commitment to financial literacy, capital allocation, and understanding how markets connect to real companies.</p>
+          <p>That interest crystallized during a private equity back-office internship, where I had close exposure to the deal environment. It confirmed two things: private equity is the long-term direction I want to pursue, and I thrive in roles closer to analysis, decisions, and the businesses themselves.</p>
+        </div>
+
+        <aside class="about-aside animate-on-scroll" aria-label="Personal philosophy">
+          <blockquote>
+            "To be careful whose advice you buy, but patient with those who supply it."
+          </blockquote>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       EXPERIENCE
+       ================================================================ -->
+  <section class="experience" id="experience">
+    <div class="container">
+      <p class="section-label animate-on-scroll">Experience</p>
+      <h2 class="section-title animate-on-scroll">Professional Journey</h2>
+
+      <div class="timeline stagger-children">
+
+        <!-- ADEPA -->
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3 class="timeline-company">ADEPA Global Services</h3>
+              <p class="timeline-role">Intern — Fund Accounting</p>
+              <p class="timeline-meta">June – August 2025 · Munsbach, Luxembourg</p>
+            </div>
+            <ul>
+              <li>Used eFront for accounting tasks including invoice booking, capital calls, distributions, and bank reconciliations.</li>
+              <li>Communicated daily reports and client correspondence to coordinate efficiency and risk control.</li>
+              <li>Reviewed due diligence and valuation weekly reports to understand financial modelling and credit risk assessment.</li>
+              <li>Performed detailed bi-weekly bank reconciliations ensuring accurate NAV calculations and compliant operational workflow.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ZenView -->
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3 class="timeline-company">ZenView <span class="gold-text">·</span> VR Environment Creation</h3>
+              <p class="timeline-role">Intern</p>
+              <p class="timeline-meta">August 2020 · Luxembourg</p>
+            </div>
+            <ul>
+              <li>Engineered tailored ZEN VR environments implemented as a key element of ZenView's client solutions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- VRCreative -->
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3 class="timeline-company">VRCreative <span class="gold-text">·</span> Recreation of Historical Landmarks</h3>
+              <p class="timeline-role">Intern</p>
+              <p class="timeline-meta">August 2020 · Luxembourg</p>
+            </div>
+            <ul>
+              <li>Developed a virtual shop in Roblox with in-game transactions, user-friendly design, and immersive features.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- LuxAI -->
+        <div class="timeline-item animate-on-scroll">
+          <div class="timeline-card">
+            <div class="timeline-header">
+              <h3 class="timeline-company">LuxAI S.A. <span class="gold-text">·</span> Robot Conception</h3>
+              <p class="timeline-role">Intern</p>
+              <p class="timeline-meta">August 2019 · Luxembourg</p>
+            </div>
+            <ul>
+              <li>Researched suppliers for specific robotic components ensuring quality and adherence to standards.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       EDUCATION
+       ================================================================ -->
+  <section class="education" id="education">
+    <div class="container">
+      <p class="section-label animate-on-scroll">Education</p>
+      <h2 class="section-title animate-on-scroll">Academic Background</h2>
+
+      <div class="education-grid stagger-children">
+
+        <!-- IE Business School -->
+        <div class="education-card animate-on-scroll">
+          <h3 class="school">IE Business School</h3>
+          <p class="location">Madrid, Spain</p>
+          <p class="degree">Master's in Business Analytics and Data Science</p>
+          <p class="year">Expected July 2026</p>
+          <p class="details">Key areas: Big Data &amp; AI, SQL-based Data Architectures, Machine Learning, Data Visualization, MLOps</p>
+          <p class="highlight">Ranked 3rd in cohort intake</p>
+        </div>
+
+        <!-- UCLouvain -->
+        <div class="education-card animate-on-scroll">
+          <h3 class="school">UCLouvain Saint-Louis</h3>
+          <p class="location">Brussels, Belgium</p>
+          <p class="degree">Bachelor of Business Engineering (Bilingual FR/EN)</p>
+          <p class="year">July 2025</p>
+          <p class="details">Key courses: Financial Modelling, Business, Organisations Management, Financial Markets Analysis</p>
+          <p class="highlight">Completed in 2 years (accelerated from 3 years)</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       SKILLS
+       ================================================================ -->
+  <section class="skills" id="skills">
+    <div class="container">
+      <p class="section-label animate-on-scroll">Skills</p>
+      <h2 class="section-title animate-on-scroll">Competencies</h2>
+
+      <div class="skills-grid stagger-children">
+
+        <!-- Technical -->
+        <div class="skills-column animate-on-scroll">
+          <h3>Technical</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">SQL</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Data Analysis</span>
+            <span class="skill-tag">Machine Learning</span>
+            <span class="skill-tag">Data Visualization</span>
+            <span class="skill-tag">Financial Modelling</span>
+            <span class="skill-tag">Excel / Accounting Modelling</span>
+            <span class="skill-tag">eFront (PE software)</span>
+          </div>
+        </div>
+
+        <!-- Finance & Business -->
+        <div class="skills-column animate-on-scroll">
+          <h3>Finance &amp; Business</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">PE Lifecycle</span>
+            <span class="skill-tag">Screening</span>
+            <span class="skill-tag">Due Diligence</span>
+            <span class="skill-tag">Value Creation</span>
+            <span class="skill-tag">Exit Strategy</span>
+            <span class="skill-tag">Capital Allocation</span>
+            <span class="skill-tag">Business Model Analysis</span>
+            <span class="skill-tag">Investment Logic</span>
+          </div>
+        </div>
+
+        <!-- Languages -->
+        <div class="skills-column animate-on-scroll">
+          <h3>Languages</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">French (Native)</span>
+            <span class="skill-tag">English (Fluent – 15+ yrs)</span>
+            <span class="skill-tag">Spanish (Good – 3 yrs)</span>
+            <span class="skill-tag">German (Basic)</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       PROJECTS
+       ================================================================ -->
+  <!-- Add your project data in /assets/js/projects.js as a JSON array -->
+  <section class="projects" id="projects">
+    <div class="container">
+      <p class="section-label animate-on-scroll">Projects</p>
+      <h2 class="section-title animate-on-scroll">Selected Work</h2>
+
+      <div class="projects-grid stagger-children" id="projects-grid">
+        <!-- Project cards are injected here by main.js from projects.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CERTIFICATIONS
+       ================================================================ -->
+  <!-- Add your certification data in /assets/js/certifications.js as a JSON array -->
+  <section class="certifications" id="certifications">
+    <div class="container">
+      <p class="section-label animate-on-scroll">Certifications</p>
+      <h2 class="section-title animate-on-scroll">Credentials</h2>
+
+      <div class="certifications-grid stagger-children" id="certifications-grid">
+        <!-- Certification cards are injected here by main.js from certifications.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       CONTACT
+       ================================================================ -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-inner">
+        <p class="section-label animate-on-scroll">Contact</p>
+        <h2 class="section-title animate-on-scroll" style="text-align:center;">Let's Connect</h2>
+        <h2 class="section-title animate-on-scroll" style="display:none;"><!-- prevents duplicate h2 --></h2>
+
+        <p class="contact-text animate-on-scroll">Always open to conversations about private equity, data, or global career paths.</p>
+
+        <div class="contact-links animate-on-scroll">
+          <a href="mailto:rom.gelin@student.ie.edu" class="contact-link" aria-label="Send email">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            rom.gelin@student.ie.edu
+          </a>
+          <a href="https://www.linkedin.com/in/romain-gelin" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="LinkedIn profile">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            LinkedIn
+          </a>
+          <a href="https://github.com/R1G12" target="_blank" rel="noopener noreferrer" class="contact-link" aria-label="GitHub profile">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+            GitHub
+          </a>
+        </div>
+
+        <form class="contact-form animate-on-scroll" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contact-name">Name</label>
+              <input type="text" id="contact-name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label for="contact-email">Email</label>
+              <input type="email" id="contact-email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" placeholder="Your message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+       FOOTER
+       ================================================================ -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-content">
+        <span>Romain Gelin</span>
+        <span class="footer-divider">·</span>
+        <span id="current-year"></span>
+        <span class="footer-divider">·</span>
+        <div class="footer-links">
+          <a href="https://www.linkedin.com/in/romain-gelin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14m-.5 15.5v-5.3a3.26 3.26 0 00-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 011.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 001.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 00-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a href="https://github.com/R1G12" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59 0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+        </div>
+        <span class="footer-divider">·</span>
+        <span>Built with intent.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================================================================
+       LIGHTBOX OVERLAY
+       ================================================================ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate image preview">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">✕</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- ================================================================
+       SCRIPTS
+       ================================================================ -->
+  <!-- Data files (must load before main.js) -->
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/certifications.js"></script>
+  <!-- Main application script -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
