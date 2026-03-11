@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectsGrid = document.getElementById('projects-grid');
 
     if (projectsGrid && typeof projects !== 'undefined') {
-        projects.forEach(project => {
+        projects.forEach((project, projectIndex) => {
             const card = document.createElement('div');
             card.className = 'project-card animate-on-scroll';
 
@@ -127,9 +127,22 @@ document.addEventListener('DOMContentLoaded', () => {
           </a>`;
             }
 
+            // Image switcher HTML
+            const hasMultipleImages = project.images && project.images.length > 1;
+            const carouselButtons = hasMultipleImages ? `
+          <button class="project-carousel-btn prev" aria-label="Previous image">
+            <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+          </button>
+          <button class="project-carousel-btn next" aria-label="Next image">
+            <svg viewBox="0 0 24 24"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+          </button>
+          <div class="project-image-counter">1 / ${project.images.length}</div>
+        ` : '';
+
             card.innerHTML = `
         <div class="project-card-image">
-          <img src="${project.image}" alt="${project.title}" loading="lazy" />
+          <img src="${project.images[0]}" alt="${project.title} - image 1" loading="lazy" />
+          ${carouselButtons}
         </div>
         <div class="project-card-body">
           <h3 class="project-card-title">${project.title}</h3>
@@ -138,6 +151,29 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="project-card-links">${linksHtml}</div>
         </div>
       `;
+
+            // Functionality for switcher
+            if (hasMultipleImages) {
+                let currentIdx = 0;
+                const img = card.querySelector('img');
+                const counter = card.querySelector('.project-image-counter');
+                
+                card.querySelector('.prev').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIdx = (currentIdx - 1 + project.images.length) % project.images.length;
+                    img.src = project.images[currentIdx];
+                    img.alt = `${project.title} - image ${currentIdx + 1}`;
+                    counter.textContent = `${currentIdx + 1} / ${project.images.length}`;
+                });
+
+                card.querySelector('.next').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIdx = (currentIdx + 1) % project.images.length;
+                    img.src = project.images[currentIdx];
+                    img.alt = `${project.title} - image ${currentIdx + 1}`;
+                    counter.textContent = `${currentIdx + 1} / ${project.images.length}`;
+                });
+            }
 
             projectsGrid.appendChild(card);
         });

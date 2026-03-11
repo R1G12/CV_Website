@@ -33,8 +33,11 @@ CV_Website/
 │   │   └── certifications.js   ← Certification data (edit this!)
 │   ├── images/
 │   │   ├── profile.jpg         ← Your photo
-│   │   ├── project-X.jpg       ← Project thumbnails
-│   │   └── certifications/     ← NEW: Folder for all your cert images
+│   │   ├── Projects/           ← NEW: Nested folders per project
+│   │   │   └── Project-Name/   ← Folder for a single project
+│   │   │       ├── image-1.jpg
+│   │   │       └── image-2.jpg
+│   │   └── certifications/     ← Folder for cert images
 │   └── Romain_Gelin_CV.pdf     ← Your CV (linked in Hero)
 ```
 
@@ -47,11 +50,12 @@ For a professional look, ensure your images match these recommended dimensions:
 | File / Folder | Purpose | Recommended Size | Location |
 |---------------|---------|-----------------|----------|
 | `profile.jpg` | Hero profile photo | **560 × 680 px** | `assets/images/` |
-| `project-X.jpg` | Project card thumbnails | **400 × 300 px** | `assets/images/` |
+| `Projects/` | **Project images** | **800 × 500 px** | `assets/images/Projects/[Project-Name]/` |
 | `certifications/` | **All certificate images** | **600 × 400 px** | `assets/images/certifications/` |
 
 > [!IMPORTANT]
-> The certifications section now uses a **horizontal scroll**. Simply drop your images into the `certifications/` folder and update `assets/js/certifications.js` to show them.
+> Both sections now use **horizontal scroll**. 
+> For Projects, you can now have **multiple images** per card. Create a folder for each project and drop your images there.
 
 > [!TIP]
 > Use the exact same filenames as the placeholders to avoid changing the code.
@@ -61,14 +65,17 @@ For a professional look, ensure your images match these recommended dimensions:
 ## ✏️ How to Add Your Content
 
 ### 1. Update Projects
-Open `assets/js/projects.js` and add your project details to the `projects` array. The site will automatically generate a new card for each entry.
+Open `assets/js/projects.js` and add your project details. Use the `images` array to point to one or more files in your project folder.
 
 ```js
 {
   title: "Example Project",
-  description: "What did you build and why?",
-  tags: ["Python", "Machine Learning"],
-  image: "assets/images/project-1.jpg",
+  description: "What did you build?",
+  tags: ["Python", "ML"],
+  images: [
+    "assets/images/Projects/My-Project/img1.jpg",
+    "assets/images/Projects/My-Project/img2.jpg"
+  ],
   github: "https://github.com/R1G12/...",
   live: "" 
 }
