@@ -16,6 +16,8 @@ That's it — no build step required.
 
 ---
 
+---
+
 ## 📁 Folder Structure
 
 ```
@@ -26,68 +28,61 @@ CV_Website/
 │   ├── css/
 │   │   └── style.css           ← All styles & CSS variables
 │   ├── js/
-│   │   ├── main.js             ← Navigation, animations, rendering, lightbox
-│   │   ├── projects.js         ← Project data (edit this to add projects)
-│   │   └── certifications.js   ← Certification data (edit this to add certs)
+│   │   ├── main.js             ← Application logic
+│   │   ├── projects.js         ← Project data (edit this!)
+│   │   └── certifications.js   ← Certification data (edit this!)
 │   ├── images/
-│   │   ├── profile.jpg         ← Your profile photo (replace placeholder)
-│   │   ├── project-1.jpg       ← Project thumbnails (400×300 recommended)
-│   │   ├── project-2.jpg
-│   │   ├── project-3.jpg
-│   │   ├── cert-1.jpg          ← Certificate images (600×400 recommended)
-│   │   ├── cert-2.jpg
-│   │   └── cert-3.jpg
-│   └── Romain_Gelin_CV.pdf     ← Your CV (linked from hero section)
+│   │   ├── profile.jpg         ← Your photo
+│   │   ├── project-X.jpg       ← Project thumbnails
+│   │   └── cert-X.jpg          ← Certificate images
+│   └── Romain_Gelin_CV.pdf     ← Your CV (linked in Hero)
 ```
-
----
-
-## ✏️ How to Add / Edit Projects
-
-Open `assets/js/projects.js` and add an object to the `projects` array:
-
-```js
-{
-  title: "My New Project",
-  description: "A short description of what this project does.",
-  tags: ["Python", "Data Viz"],
-  image: "assets/images/project-4.jpg",    // add the image to assets/images/
-  github: "https://github.com/R1G12/...",
-  live: "https://example.com"               // leave "" if no live link
-}
-```
-
-The site automatically renders all entries — no HTML changes needed.
-
----
-
-## ✏️ How to Add / Edit Certifications
-
-Open `assets/js/certifications.js` and add an object to the `certifications` array:
-
-```js
-{
-  name: "Certificate Name",
-  issuer: "Issuing Organization",
-  date: "2025",
-  description: "Brief description of the certification.",
-  image: "assets/images/cert-4.jpg"        // add the image to assets/images/
-}
-```
-
-Clicking a certificate image opens a lightbox preview.
 
 ---
 
 ## 🖼️ Replacing Placeholder Images
 
-| File | Purpose | Recommended Size |
-|------|---------|-----------------|
-| `profile.jpg` | Hero profile photo | 560×680 px |
-| `project-X.jpg` | Project card thumbnails | 400×300 px |
-| `cert-X.jpg` | Certificate images | 600×400 px |
+For a professional look, ensure your images match these recommended dimensions:
 
-Simply replace the placeholder files with your real images using the same filenames.
+| File | Purpose | Recommended Size | Location |
+|------|---------|-----------------|----------|
+| `profile.jpg` | Hero profile photo | **560 × 680 px** | `assets/images/` |
+| `project-X.jpg` | Project card thumbnails | **400 × 300 px** | `assets/images/` |
+| `cert-X.jpg` | Certificate images | **600 × 400 px** | `assets/images/` |
+
+> [!TIP]
+> Use the exact same filenames as the placeholders to avoid changing the code.
+
+---
+
+## ✏️ How to Add Your Content
+
+### 1. Update Projects
+Open `assets/js/projects.js` and add your project details to the `projects` array. The site will automatically generate a new card for each entry.
+
+```js
+{
+  title: "Example Project",
+  description: "What did you build and why?",
+  tags: ["Python", "Machine Learning"],
+  image: "assets/images/project-1.jpg",
+  github: "https://github.com/R1G12/...",
+  live: "" 
+}
+```
+
+### 2. Update Certifications
+Open `assets/js/certifications.js` and add your credentials. Clicking a certificate will open it in a lightbox.
+
+```js
+{
+  name: "Certification Name",
+  issuer: "Organization",
+  date: "2025",
+  description: "Brief summary of skills gained.",
+  image: "assets/images/cert-1.jpg"
+}
+```
 
 ---
 
@@ -109,11 +104,11 @@ All design tokens are CSS custom properties in `assets/css/style.css`:
 
 ## 📬 Contact Form
 
-The contact form uses [Formspree](https://formspree.io/) by default. To activate it:
+The contact form is pre-configured for [Formspree](https://formspree.io/). 
 
-1. Create a free Formspree account
-2. Create a new form and copy your form ID
-3. In `index.html`, replace `YOUR_FORM_ID` in the form action URL:
+1. Create a free account at [Formspree](https://formspree.io/).
+2. Create a new form and copy your **Form ID**.
+3. In `index.html` (line 362), replace `YOUR_FORM_ID` with your actual ID:
    ```html
    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
    ```
