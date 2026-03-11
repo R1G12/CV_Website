@@ -852,16 +852,37 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .certifications-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  overflow-x: auto;
   gap: var(--space-lg);
+  padding: var(--space-sm) 2px var(--space-xl);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold) transparent;
+}
+
+.certifications-grid::-webkit-scrollbar {
+  height: 6px;
+}
+
+.certifications-grid::-webkit-scrollbar-track {
+  background: rgba(201, 168, 76, 0.05);
+  border-radius: 10px;
+}
+
+.certifications-grid::-webkit-scrollbar-thumb {
+  background-color: var(--gold);
+  border-radius: 10px;
 }
 
 .cert-card {
+  flex: 0 0 350px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
   overflow: hidden;
+  scroll-snap-align: start;
   transition: border-color var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
 }
 
@@ -1229,9 +1250,17 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
 
-  .projects-grid,
-  .certifications-grid {
+  .projects-grid {
     grid-template-columns: 1fr;
+  }
+
+  .certifications-grid {
+    padding-bottom: var(--space-lg);
+  }
+
+  .cert-card {
+    flex: 0 0 calc(100% - 40px);
+    max-width: 320px;
   }
 
   .form-row {

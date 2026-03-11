@@ -34,7 +34,7 @@ CV_Website/
 │   ├── images/
 │   │   ├── profile.jpg         ← Your photo
 │   │   ├── project-X.jpg       ← Project thumbnails
-│   │   └── cert-X.jpg          ← Certificate images
+│   │   └── certifications/     ← NEW: Folder for all your cert images
 │   └── Romain_Gelin_CV.pdf     ← Your CV (linked in Hero)
 ```
 
@@ -44,11 +44,14 @@ CV_Website/
 
 For a professional look, ensure your images match these recommended dimensions:
 
-| File | Purpose | Recommended Size | Location |
-|------|---------|-----------------|----------|
+| File / Folder | Purpose | Recommended Size | Location |
+|---------------|---------|-----------------|----------|
 | `profile.jpg` | Hero profile photo | **560 × 680 px** | `assets/images/` |
 | `project-X.jpg` | Project card thumbnails | **400 × 300 px** | `assets/images/` |
-| `cert-X.jpg` | Certificate images | **600 × 400 px** | `assets/images/` |
+| `certifications/` | **All certificate images** | **600 × 400 px** | `assets/images/certifications/` |
+
+> [!IMPORTANT]
+> The certifications section now uses a **horizontal scroll**. Simply drop your images into the `certifications/` folder and update `assets/js/certifications.js` to show them.
 
 > [!TIP]
 > Use the exact same filenames as the placeholders to avoid changing the code.
