@@ -1,130 +1,101 @@
-# Romain Gelin — Personal Portfolio Website
+# My Personal Portfolio & Digital CV
 
-A refined, editorial-style personal website showcasing experience, education, projects, and certifications. Built with pure HTML, CSS, and JavaScript — no frameworks, no build step. Deployable on **GitHub Pages** out of the box.
+Welcome to the repository for my personal portfolio website. This site serves as a comprehensive digital replacement for my CV, showcasing my professional journey, academic background, technical skills, and key projects in business analytics and finance.
 
----
+I built this site with a premium, sleek aesthetic that reflects my commitment to quality and detail.
 
-## 🚀 Deploy on GitHub Pages
+## 🛠️ How to Update My Content
 
-1. Push this repository to GitHub (e.g. `https://github.com/R1G12/CV_Website`)
-2. Go to **Settings → Pages**
-3. Under **Source**, select **Branch: `main`** and folder **`/ (root)`**
-4. Click **Save**
-5. Your site will be live at `https://R1G12.github.io/CV_Website/`
+I designed this website to be easily maintainable. Most of the content is either hardcoded in `index.html` or dynamically generated from data files in the `assets/js/` directory.
 
-That's it — no build step required.
+### 1. About Me
+*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
+*   **Location:** Look for the `<section class="about" id="about">` (approx. line 121).
+*   **How to edit:** The text is hardcoded in HTML paragraphs (`<p>`). Simply rewrite the text within those tags.
 
----
+### 2. Experience
+*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
+*   **Location:** Look for the `<section class="experience" id="experience">` (approx. line 145).
+*   **How to edit:** Each role is a `timeline-item`. To add a new one, copy an existing `timeline-item` block and update the company name, role, dates, and bullet points.
 
----
+### 3. Education
+*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
+*   **Location:** Look for the `<section class="education" id="education">` (approx. line 218).
+*   **How to edit:** Similar to Experience, each degree is an `education-card`. Copy a card block to add a new institution.
 
-## 📁 Folder Structure
+### 4. Skills
+*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
+*   **Location:** Look for the `<section class="skills" id="skills">` (approx. line 252).
+*   **How to edit:** 
+    *   **Categories:** The columns (Technical, Finance & Business, Languages) are defined by `<h3>` tags. You can rename them directly.
+    *   **Adding/Removing Skills:** Each skill is a `<span class="skill-tag">Skill Name</span>`. 
+    *   To **add** a skill, add a new `<span>` with the `skill-tag` class.
+    *   To **remove** a skill, simply delete the `<span>` line.
+    *   To **expand categories**, you can add a new `skills-column` div and follow the same structure.
 
-```
-CV_Website/
-├── index.html                  ← Main page (all sections)
-├── README.md                   ← This file
-├── assets/
-│   ├── css/
-│   │   └── style.css           ← All styles & CSS variables
-│   ├── js/
-│   │   ├── main.js             ← Application logic
-│   │   ├── projects.js         ← Project data (edit this!)
-│   │   └── certifications.js   ← Certification data (edit this!)
-│   ├── images/
-│   │   ├── profile.jpg         ← Your photo
-│   │   ├── Projects/           ← NEW: Nested folders per project
-│   │   │   └── Project-Name/   ← Folder for a single project
-│   │   │       ├── image-1.jpg
-│   │   │       └── image-2.jpg
-│   │   └── certifications/     ← Folder for cert images
-│   └── Romain_Gelin_CV.pdf     ← Your CV (linked in Hero)
-```
+### 5. Projects
+*   **File:** `assets/js/projects.js` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/assets/js/projects.js)
+*   **How it works:** This is a JavaScript array of objects. `main.js` reads this file and renders the cards automatically.
+*   **Adding a project:** Add a new object to the `projects` array:
+    ```javascript
+    {
+      title: "New Project Name",
+      description: "Brief description of the work.",
+      tags: ["Keyword1", "Keyword2"],
+      images: ["assets/images/Projects/Path/To/Image.png"],
+      github: "https://github.com/your-repo", // Leave as "" to hide
+      live: "" // Leave as "" to hide
+    }
+    ```
 
----
+### 6. Certifications
+*   **File:** `assets/js/certifications.js` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/assets/js/certifications.js)
+*   **How it works:** Similar to Projects, this is a JavaScript data file.
+*   **Adding a cert:** Add a new object to the `certifications` array with the `name`, `issuer`, `date`, `description`, and `image` path.
 
-## 🖼️ Replacing Placeholder Images
-
-For a professional look, ensure your images match these recommended dimensions:
-
-| File / Folder | Purpose | Recommended Size | Location |
-|---------------|---------|-----------------|----------|
-| `profile.jpg` | Hero profile photo | **560 × 680 px** | `assets/images/` |
-| `Projects/` | **Project images** | **800 × 500 px** | `assets/images/Projects/[Project-Name]/` |
-| `certifications/` | **All certificate images** | **600 × 400 px** | `assets/images/certifications/` |
-
-> [!IMPORTANT]
-> Both sections now use **horizontal scroll**. 
-> For Projects, you can now have **multiple images** per card. Create a folder for each project and drop your images there.
-
-> [!TIP]
-> Use the exact same filenames as the placeholders to avoid changing the code.
+### 7. Contact Info
+*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
+*   **Location:** Look for the `<section class="contact" id="contact">` (approx. line 338).
+*   **How to edit:** Update the `href` and text for my email and LinkedIn links. Note that I have removed the contact form to keep the section lean and direct.
 
 ---
 
-## ✏️ How to Add Your Content
+## 🔗 Managing GitHub Project Links
 
-### 1. Update Projects
-Open `assets/js/projects.js` and add your project details. Use the `images` array to point to one or more files in your project folder.
+I have implemented a conditional rendering system for project links. Right now, most project links are hidden because they point to my general profile rather than specific repositories.
 
-```js
+### How to bring them back:
+1.  **Open** `assets/js/projects.js`.
+2.  **Find** the project you want to update.
+3.  **Update** the `github` field with the specific URL for that project (e.g., `https://github.com/R1G12/my-cool-project`).
+4.  **Save** the file.
+
+### How it works technically:
+The rendering logic in `assets/js/main.js` checks if the `github` field is:
+1.  Not empty.
+2.  Not my general profile link (`https://github.com/R1G12/`).
+
+If both conditions are met, the "GitHub" link will automatically appear on the project card.
+
+**Example Project Object:**
+```javascript
 {
-  title: "Example Project",
-  description: "What did you build?",
-  tags: ["Python", "ML"],
-  images: [
-    "assets/images/Projects/My-Project/img1.jpg",
-    "assets/images/Projects/My-Project/img2.jpg"
-  ],
-  github: "https://github.com/R1G12/...",
-  live: "" 
+  title: "My Project",
+  // ... other fields
+  github: "https://github.com/R1G12/specific-repo" // This WILL show a link
 }
-```
 
-### 2. Update Certifications
-Open `assets/js/certifications.js` and add your credentials. Clicking a certificate will open it in a lightbox.
-
-```js
 {
-  name: "Certification Name",
-  issuer: "Organization",
-  date: "2025",
-  description: "Brief summary of skills gained.",
-  image: "assets/images/cert-1.jpg"
+  title: "Private Project",
+  // ... other fields
+  github: "https://github.com/R1G12/" // This WILL NOT show a link
 }
 ```
 
 ---
 
-## 🎨 Customization
-
-All design tokens are CSS custom properties in `assets/css/style.css`:
-
-```css
-:root {
-  --navy: #0D1B2A;
-  --off-white: #F5F0E8;
-  --gold: #C9A84C;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-body: 'Source Sans 3', Helvetica, sans-serif;
-}
-```
-
----
-
-## 📬 Contact Form
-
-The contact form is pre-configured for [Formspree](https://formspree.io/). 
-
-1. Create a free account at [Formspree](https://formspree.io/).
-2. Create a new form and copy your **Form ID**.
-3. In `index.html` (line 362), replace `YOUR_FORM_ID` with your actual ID:
-   ```html
-   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-
----
-
-## 📝 License
-
-Personal portfolio — © Romain Gelin
+## 🚀 Local Development
+To view changes locally:
+1.  Clone this repository.
+2.  Open `index.html` in any modern web browser.
+3.  Refresh the page after making edits to the HTML, CSS, or JS files.
