@@ -14,7 +14,7 @@ const projects = [
       "assets/images/Projects/Corporate Finance Fundamentals/Corporate Finance Fundamentals - page-2.jpg",
       "assets/images/Projects/Corporate Finance Fundamentals/Excel Worksheet.png"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -24,7 +24,7 @@ const projects = [
     images: [
       "assets/images/Projects/Evaluating a manufacturing process/Evaluating a manufacturing process.jpg"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     images: [
       "assets/images/Projects/Net Revenue Management/Net Revenue Management_Waterfall.png"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -45,7 +45,7 @@ const projects = [
       "assets/images/Projects/PowerBI Sales analysis/Capture d'écran 2026-03-11 131942.png",
       "assets/images/Projects/PowerBI Sales analysis/Capture d'écran 2026-03-11 131956.png"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -56,7 +56,7 @@ const projects = [
       "assets/images/Projects/Predicting weather/Correlation_plot.png",
       "assets/images/Projects/Predicting weather/tower_bridge.jpg"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -67,7 +67,7 @@ const projects = [
       "assets/images/Projects/Predictive modelling/Summary agriculture work.png",
       "assets/images/Projects/Predictive modelling/farmer_in_a_field.jpg"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -78,7 +78,7 @@ const projects = [
       "assets/images/Projects/Project Netflix/Netflix_mapping.png",
       "assets/images/Projects/Project Netflix/redpopcorn.jpg"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   },
   {
@@ -88,7 +88,7 @@ const projects = [
     images: [
       "assets/images/Projects/Website Streamlit Sales data/Sales Dashboard.png"
     ],
-    github: "https://github.com/R1G12/",
+    github: "",
     live: ""
   }
 ];

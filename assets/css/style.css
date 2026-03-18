@@ -1091,59 +1091,7 @@ h1, h2, h3, h4, h5, h6 {
 /* --------------------------------------------------------------------------
    15. CONTACT SECTION
    -------------------------------------------------------------------------- */
-.contact {
-  padding: var(--section-padding);
-}
 
-.contact-inner {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.contact-text {
-  font-size: var(--fs-lg);
-  color: var(--text-secondary);
-  margin-bottom: var(--space-lg);
-  line-height: 1.7;
-}
-
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-2xl);
-  flex-wrap: wrap;
-}
-
-.contact-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: var(--fs-base);
-  color: var(--text-secondary);
-  transition: color var(--transition-fast);
-}
-
-.contact-link:hover {
-  color: var(--gold);
-}
-
-.contact-link svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
-  flex-shrink: 0;
-}
-
-/* Contact links */
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-sm);
-  flex-wrap: wrap;
-}
 
 /* --------------------------------------------------------------------------
    16. FOOTER
@@ -1291,9 +1239,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 320px;
   }
 
-  .form-row {
-    grid-template-columns: 1fr;
-  }
+
 
   .contact-links {
     flex-direction: column;

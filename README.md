@@ -1,101 +1,108 @@
 # My Personal Portfolio & Digital CV
 
-Welcome to the repository for my personal portfolio website. This site serves as a comprehensive digital replacement for my CV, showcasing my professional journey, academic background, technical skills, and key projects in business analytics and finance.
+Welcome to my portfolio repository! This is where I manage my personal website, which acts as my digital CV and a showcase of my projects at the intersection of Business Analytics and Data Science.
 
-I built this site with a premium, sleek aesthetic that reflects my commitment to quality and detail.
+I built this site to be a high-performance, visually premium reflection of my professional identity. It is optimized for both speed and aesthetics.
 
-## 🛠️ How to Update My Content
+## 🛠️ How I Update My Content
 
-I designed this website to be easily maintainable. Most of the content is either hardcoded in `index.html` or dynamically generated from data files in the `assets/js/` directory.
+I've designed the site architecture so that I can update my information quickly. The content is split between static HTML and dynamic JavaScript data files.
 
 ### 1. About Me
-*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
-*   **Location:** Look for the `<section class="about" id="about">` (approx. line 121).
-*   **How to edit:** The text is hardcoded in HTML paragraphs (`<p>`). Simply rewrite the text within those tags.
+*   **File:** `index.html`
+*   **Location:** `<section class="about" id="about">` (approx. line 121)
+*   **Type:** **Hardcoded in HTML**
+*   **How to edit:** Search for the text in `index.html` and update it directly within the `<p>` tags.
 
 ### 2. Experience
-*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
-*   **Location:** Look for the `<section class="experience" id="experience">` (approx. line 145).
-*   **How to edit:** Each role is a `timeline-item`. To add a new one, copy an existing `timeline-item` block and update the company name, role, dates, and bullet points.
+*   **File:** `index.html`
+*   **Location:** `<section class="experience" id="experience">` (approx. line 145)
+*   **Type:** **Hardcoded in HTML**
+*   **How to edit:** Each role is a `timeline-item`. To **add a new entry**, I just copy a `timeline-item` block, paste it at the top of the `timeline` div, and update the details (company, role, dates, description).
 
 ### 3. Education
-*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
-*   **Location:** Look for the `<section class="education" id="education">` (approx. line 218).
-*   **How to edit:** Similar to Experience, each degree is an `education-card`. Copy a card block to add a new institution.
+*   **File:** `index.html`
+*   **Location:** `<section class="education" id="education">` (approx. line 218)
+*   **Type:** **Hardcoded in HTML**
+*   **How to edit:** Each degree is an `education-card`. To **add a new one**, I copy an existing card and update the school name and degree information.
 
 ### 4. Skills
-*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
-*   **Location:** Look for the `<section class="skills" id="skills">` (approx. line 252).
+*   **File:** `index.html`
+*   **Location:** `<section class="skills" id="skills">` (approx. line 252)
+*   **Type:** **Hardcoded in HTML**
 *   **How to edit:** 
-    *   **Categories:** The columns (Technical, Finance & Business, Languages) are defined by `<h3>` tags. You can rename them directly.
-    *   **Adding/Removing Skills:** Each skill is a `<span class="skill-tag">Skill Name</span>`. 
-    *   To **add** a skill, add a new `<span>` with the `skill-tag` class.
-    *   To **remove** a skill, simply delete the `<span>` line.
-    *   To **expand categories**, you can add a new `skills-column` div and follow the same structure.
+    *   **Adding/Removing Skills:** I look for the `<span class="skill-tag">` elements. To add a skill, I create a new `<span>`. To remove one, I delete the line.
+    *   **Renaming Categories:** I edit the `<h3>` titles in each `skills-column`.
+    *   **Adding New Categories:** I copy a `skills-column` div and add it to the `skills-grid`.
 
 ### 5. Projects
-*   **File:** `assets/js/projects.js` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/assets/js/projects.js)
-*   **How it works:** This is a JavaScript array of objects. `main.js` reads this file and renders the cards automatically.
-*   **Adding a project:** Add a new object to the `projects` array:
+*   **File:** `assets/js/projects.js`
+*   **Type:** **Generated from JavaScript**
+*   **How it works:** This file contains a constant array called `projects`. The site automatically renders a card for every object in this array.
+*   **How to edit:** I can add, remove, or modify objects in the array. 
+*   **Adding a project:** I add a new object following this structure:
     ```javascript
     {
-      title: "New Project Name",
-      description: "Brief description of the work.",
-      tags: ["Keyword1", "Keyword2"],
-      images: ["assets/images/Projects/Path/To/Image.png"],
-      github: "https://github.com/your-repo", // Leave as "" to hide
-      live: "" // Leave as "" to hide
+      title: "My New Project",
+      description: "A short but impactful description.",
+      tags: ["Python", "Finance"],
+      images: ["assets/images/Path/To/Image.png"],
+      github: "https://github.com/R1G12/my-repo", // Link to the repo
+      live: "" // Link to live demo (or empty to hide)
     }
     ```
 
 ### 6. Certifications
-*   **File:** `assets/js/certifications.js` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/assets/js/certifications.js)
-*   **How it works:** Similar to Projects, this is a JavaScript data file.
-*   **Adding a cert:** Add a new object to the `certifications` array with the `name`, `issuer`, `date`, `description`, and `image` path.
+*   **File:** `assets/js/certifications.js`
+*   **Type:** **Generated from JavaScript**
+*   **How to edit:** Similar to projects, I just add or remove certificate objects in the `certifications` array.
 
-### 7. Contact Info
-*   **File:** `index.html` (file:///c:/Users/Romain/Documents/GitHub/CV_Website/index.html)
-*   **Location:** Look for the `<section class="contact" id="contact">` (approx. line 338).
-*   **How to edit:** Update the `href` and text for my email and LinkedIn links. Note that I have removed the contact form to keep the section lean and direct.
+### 7. Contact
+*   **File:** `index.html`
+*   **Type:** **Hardcoded in HTML**
+*   **How to edit:** I've removed the automated contact form to keep the site clean. To update my LinkedIn or other links, I go to the `footer` section (line 353) or the general `Contact` area (line 338).
 
 ---
 
-## 🔗 Managing GitHub Project Links
+## 🔗 Managing Project GitHub Links
 
-I have implemented a conditional rendering system for project links. Right now, most project links are hidden because they point to my general profile rather than specific repositories.
+I use a smart logic to control which projects show a GitHub button.
 
-### How to bring them back:
-1.  **Open** `assets/js/projects.js`.
-2.  **Find** the project you want to update.
-3.  **Update** the `github` field with the specific URL for that project (e.g., `https://github.com/R1G12/my-cool-project`).
-4.  **Save** the file.
+### Hiding links
+To hide the GitHub link for a project (e.g., if it's a private repository), I simply set the `github` field to an empty string `""` in `assets/js/projects.js`.
 
-### How it works technically:
-The rendering logic in `assets/js/main.js` checks if the `github` field is:
-1.  Not empty.
-2.  Not my general profile link (`https://github.com/R1G12/`).
+### Re-enabling links
+To show the link again, I add the valid URL to the `github` field. The site will automatically detect the presence of the link and render the button.
 
-If both conditions are met, the "GitHub" link will automatically appear on the project card.
-
-**Example Project Object:**
+**Example Without Link:**
 ```javascript
 {
-  title: "My Project",
-  // ... other fields
-  github: "https://github.com/R1G12/specific-repo" // This WILL show a link
+  title: "Confidential Project",
+  github: "", // The GitHub button will NOT appear
+  // ...
 }
+```
 
+**Example With Link:**
+```javascript
 {
-  title: "Private Project",
-  // ... other fields
-  github: "https://github.com/R1G12/" // This WILL NOT show a link
+  title: "Open Source Analysis",
+  github: "https://github.com/R1G12/analysis-repo", // The button WILL appear
+  // ...
 }
 ```
 
 ---
 
-## 🚀 Local Development
-To view changes locally:
-1.  Clone this repository.
-2.  Open `index.html` in any modern web browser.
-3.  Refresh the page after making edits to the HTML, CSS, or JS files.
+## 🚀 Running the site locally
+
+To view my changes before pushing:
+1.  Open this folder in my favorite editor (VS Code).
+2.  Open `index.html` in a web browser.
+3.  Refresh the page whenever I make an edit.
+
+## 🌍 Deployment (GitHub Pages)
+
+My site is hosted on **GitHub Pages**. Whenever I push changes to the `main` branch, GitHub automatically rebuilds and deploys the site.
+
+**Important Note:** The site relies on the existing structure (`index.html` at the root and dependencies in `assets/`). Creating extra standalone HTML files (like `portfolio.html`) is not useful because the site is configured to serve `index.html`. If I need a new page, I should update the existing files or explicitly change the repository settings to serve a different path.
