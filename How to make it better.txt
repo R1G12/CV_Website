@@ -1,0 +1,651 @@
+ I'll analyze the current website and research modern portfolio design trends from Awwwards and similar sites to suggest concrete
+  improvements.
+
+● Fetch(https://www.awwwards.com/)
+  ⎿  Received 330.9KB (200 OK)
+
+● Web Search("best personal portfolio website design 2024 2025 interactive animations visual effects")
+  ⎿  Did 0 searches in 753s
+
+● Web Search("portfolio website inspiration 2024 2025 data analyst finance designer creative portfolio")
+  ⎿  Did 0 searches in 24s
+
+● Let me analyze the current website code and provide comprehensive improvement suggestions based on modern web design trends:
+
+  Read 1 file (ctrl+o to expand)
+
+● Based on my analysis of your current portfolio and modern portfolio design trends, here's a comprehensive list of improvements
+  organized by priority and implementation difficulty:
+
+  ---
+  Portfolio Enhancement Suggestions
+
+  🎯 High Impact / Easy to Implement
+
+  1. Dynamic Data Visualization
+
+  Add a visual representation of your skills and achievements:
+
+  Skills Radar Chart - Use a library like Chart.js or vis.js to create a radar chart showing skill proficiency (e.g., Python: 85%,
+  SQL: 90%, Finance: 95%, etc.)
+
+  /* Add this to style.css */
+  .skills-radar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .skills-radar { width: 220px; height: 220px; }
+  }
+
+  Certification Counter - Add a counter showing "21 Certifications Earned" with a small animated counter
+
+  Project Stats Badge - Add badges like "8 Projects", "4 Python", "2 Machine Learning"
+
+  ---
+  2. Enhanced Hover Effects & Micro-interactions
+
+  Current: Basic transform on hover
+  Improvement: Add multiple visual feedback layers
+
+  /* Enhanced project card */
+  .project-card {
+    position: relative;
+    overflow: visible; /* Allow content to expand */
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(201, 168, 76, 0.15) 0%,
+      transparent 40%
+    );
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(201, 168, 76, 0.2);
+  }
+
+  /* Label reveal on hover */
+  .project-card:hover .project-card-desc {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
+  }
+
+  Current Cert Card: Just zooms image
+  Improvement: Add a "view full certificate" overlay that appears on hover with the issuer logo
+
+  .cert-card-image::after {
+    /* Expand icon (existing) */
+  }
+
+  .cert-card-image::before {
+    content: '🔍 View Certificate';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(13, 27, 42, 0.8) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    font-family: var(--font-body);
+    font-size: var(--fs-sm);
+    color: var(--off-white);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    z-index: 2;
+  }
+
+  .cert-card-image:hover::before {
+    opacity: 1;
+  }
+
+  /* Optional: show issuer logo */
+  .cert-card-image:hover .cert-issuer-logo {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  ---
+  3. Animated Counter for Certifications
+
+  // Add to main.js after certifications render
+  function animateCounter(element, target, duration) {
+    const start = 0;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = start + (target - start) * progress;
+
+      element.textContent = Math.floor(current);
+
+      if (progress < 1) {
+        requestAnimationFrame(() => update(currentTime));
+      } else {
+        element.textContent = target; // Ensure final value
+      }
+    }
+
+    requestAnimationFrame(() => update(performance.now()));
+  }
+
+  // Add counters to certification cards
+  document.querySelectorAll('.cert-card').forEach(card => {
+    const img = card.querySelector('.cert-card-image img');
+    if (img) {
+      const issuer = img.alt.split(',')[0]; // Extract issuer from alt
+      const counter = document.createElement('span');
+      counter.className = 'cert-counter';
+      counter.style.cssText = `
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 9px;
+        font-weight: 700;
+        padding: 2px 6px;
+        border-radius: 10px;
+        z-index: 1;
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all var(--transition-fast);
+      `;
+      counter.textContent = issuer;
+      img.parentElement.appendChild(counter);
+
+      img.addEventListener('mouseenter', () => {
+        counter.style.opacity = '1';
+        counter.style.transform = 'scale(1)';
+      });
+    }
+  });
+
+  ---
+  4. Smooth Scroll Progress Indicator
+
+  Add a subtle scroll progress bar at the top of the page:
+
+  .scroll-progress {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    height: 2px;
+    background: var(--gold);
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.1s ease;
+  }
+
+  @media (max-width: 768px) {
+    .scroll-progress { top: 50px; }
+  }
+
+  // Add to main.js at the end
+  function initScrollProgress() {
+    const progress = document.querySelector('.scroll-progress');
+    if (!progress) return;
+
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = (window.scrollY / windowHeight) * 100;
+      progress.style.width = `${scrollPercent}%`;
+    }, { passive: true });
+  }
+
+  document.addEventListener('DOMContentLoaded', initScrollProgress);
+
+  ---
+  5. Parallax Effect on Hero Section
+
+  .hero {
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    opacity: 0.05;
+    will-change: transform;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  // Add to main.js - parallax on scroll
+  const heroBg = document.querySelector('.hero-bg');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+    }, { passive: true });
+  }
+
+  ---
+  🎨 Visual Enhancements
+
+  6. Image Loading Animations
+
+  /* Add this after img tags */
+  img[loading="lazy"] {
+    filter: blur(20px);
+    transition: filter 0.6s ease;
+  }
+
+  img[loading="lazy"].loaded {
+    filter: blur(0);
+  }
+
+  // Add to main.js
+  let largeScreens = false;
+
+  const lazyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        if (!img.complete) {
+          img.src = img.dataset.src || img.src;
+        } else {
+          img.classList.add('loaded');
+        }
+        lazyObserver.unobserve(img);
+      }
+    });
+  });
+
+  document.querySelectorAll('img').forEach(img => {
+    if (img.dataset.src) {
+      lazyObserver.observe(img);
+    } else {
+      img.classList.add('loaded');
+    }
+  });
+
+  ---
+  7. Gradient Text Effects
+
+  .hero-tagline {
+    /* Instead of flat gold */
+    background: linear-gradient(
+      120deg,
+      var(--gold) 0%,
+      var(--gold-light) 50%,
+      var(--gold-dark) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  ---
+  8. Floating Elements in Hero
+
+  Add subtle floating decorations behind the hero content:
+
+  .hero-decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .hero-decorations::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(201, 168, 76, 0.08) 0%,
+      transparent 70%
+    );
+    animation: float 8s ease-in-out infinite;
+  }
+
+  .hero-decorations::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    right: -10%;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(201, 168, 76, 0.05) 0%,
+      transparent 70%
+    );
+    animation: float 10s ease-in-out infinite reverse;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+  }
+
+  ---
+  📱 UX Improvements
+
+  9. Sticky Social Icons in Mobile
+
+  For mobile users, add a persistent social bar:
+
+  .mobile-social-bar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(13, 27, 42, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    display: none;
+    gap: 20px;
+    z-index: 999;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-social-bar {
+      display: flex;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .mobile-social-bar {
+      display: none;
+    }
+  }
+
+  ---
+  10. Loading Skeleton for Content
+
+  Add skeleton screens for better perceived performance:
+
+  /* For dynamic sections like projects/certs */
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--card-bg) 0%,
+      var(--card-bg) 20%,
+      rgba(255, 255, 255, 0.03) 20%,
+      rgba(255, 255, 255, 0.03) 40%,
+      var(--card-bg) 40%,
+      var(--card-bg) 60%,
+      rgba(255, 255, 255, 0.03) 60%,
+      rgba(255, 255, 255, 0.03) 80%,
+      var(--card-bg) 80%,
+      var(--card-bg) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: var(--radius-md);
+  }
+
+  @keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  ---
+  11. Email Address Click-to-Mail
+
+  <!-- In index.html -->
+  <a class="email-link" href="mailto:your@email.com">your@email.com</a>
+
+  <style>
+  .email-link {
+    position: relative;
+    color: var(--gold);
+    padding: 4px 0;
+  }
+
+  .email-link::before,
+  .email-link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: var(--gold);
+    transition: width 0.3s ease;
+    z-index: -1;
+  }
+
+  .email-link::before {
+    right: auto;
+    border-radius: 4px 0 0 4px;
+  }
+
+  .email-link::after {
+    left: auto;
+    right: 0;
+    border-radius: 0 4px 4px 0;
+  }
+
+  .email-link:hover::before,
+  .email-link:hover::after {
+    width: 50%;
+  }
+
+  @media (max-width: 768px) {
+    .email-link::after {
+      top: auto;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      border-radius: 4px 4px 0 0;
+    }
+
+    .email-link:hover::after {
+      height: 50%;
+    }
+  }
+  </style>
+
+  ---
+  🚀 Advanced Features
+
+  12. Keyboard Navigation Support
+
+  // Add to main.js
+  let focusableElements = [];
+
+  document.addEventListener('keydown', (e) => {
+    // Arrow key navigation
+    if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+      const currentIndex = focusableElements.indexOf(document.activeElement);
+      const nextIndex = (currentIndex + 1) % focusableElements.length;
+      focusableElements[nextIndex].focus();
+      e.preventDefault();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+      const currentIndex = focusableElements.indexOf(document.activeElement);
+      const prevIndex = (currentIndex - 1 + focusableElements.length) % focusableElements.length;
+      focusableElements[prevIndex].focus();
+      e.preventDefault();
+    }
+
+    // Escape closes modals/lightbox
+    if (e.key === 'Escape') {
+      const lightbox = document.querySelector('.lightbox.active');
+      const sidebar = document.querySelector('.nav-links.open');
+      if (lightbox) {
+        lightbox.classList.remove('active');
+      }
+      if (sidebar) {
+        sidebar.classList.remove('open');
+      }
+    }
+  });
+
+  ---
+  13. Performance: Intersection Observer for Animations
+
+  Your current .animate-on-scroll is good, but optimize it:
+
+  // In main.js - replace current scroll observer
+  function initScrollAnimations() {
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    if (animatedElements.length === 0) return;
+
+    const observerOptions = {
+      root: null,
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    animatedElements.forEach(el => observer.observe(el));
+  }
+
+  document.addEventListener('DOMContentLoaded', initScrollAnimations);
+
+  ---
+  14. Certificate Validation Feature
+
+  Add QR codes or validation links to certifications:
+
+  <!-- In each cert-card -->
+  <div class="cert-validation" style="
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+  ">
+    <span style="
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    ">✉️</span>
+    <span>Verify on DataCamp</span>
+  </div>
+
+  ---
+  15. Theme Toggle (Optional)
+
+  // Optional dark/light mode toggle
+  function initThemeToggle() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    if (!themeToggle) return;
+
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      localStorage.setItem('theme',
+        document.body.classList.contains('light-theme') ? 'light' : 'dark'
+      );
+    });
+  }
+
+  ---
+  📊 Summary of Priority Recommendations
+
+  ┌──────────┬────────────────────────────┬────────┬────────┐
+  │ Priority │          Feature           │ Effort │ Impact │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P1       │ Enhanced hover effects     │ Low    │ High   │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P1       │ Image loading animations   │ Low    │ Medium │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P1       │ Smooth scroll progress bar │ Low    │ Medium │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P1       │ Click-to-mail email        │ None   │ High   │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P2       │ Skills radar chart         │ Medium │ High   │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P2       │ Animated counters          │ Low    │ Medium │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P2       │ Parallax hero effect       │ Low    │ Medium │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P2       │ Floating decorations       │ Low    │ Medium │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P3       │ Skeleton loading           │ Low    │ Medium │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P3       │ Mobile social bar          │ Low    │ Low    │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P3       │ Keyboard navigation        │ Medium │ High   │
+  ├──────────┼────────────────────────────┼────────┼────────┤
+  │ P3       │ Certificate validation     │ Medium │ Medium │
+  └──────────┴────────────────────────────┴────────┴────────┘
+
+  ---
+  🎯 Implementation Order
+
+  Week 1 (Quick Wins)
+
+  1. Enhanced hover effects
+  2. Image loading animations
+  3. Click-to-mail email
+  4. Smooth scroll progress bar
+  5. Floating decorations
+
+  Week 2 (Medium)
+
+  6. Skills radar chart
+  7. Animated counters
+  8. Parallax effect
+  9. Mobile social bar
+  10. Skeleton loading
+
+  Week 3 (Optional)
+
+  11. Keyboard navigation
+  12. Certificate validation
+  13. Theme toggle (if desired)
+
+  ---
+  Would you like me to:
+  - Generate the actual CSS/JS files with these improvements?
+  - Create a specific feature in detail (e.g., the skills radar chart)?
+  - Help implement one section at a time?
+  - Generate a migration guide for the changes?
+
+✻ Churned for 50m 28s

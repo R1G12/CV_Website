@@ -1,0 +1,145 @@
+  ---
+  Project Summary: Job Search Automation Agent (CV Optimizer)
+
+  This project automates job searching for Private Equity / Investment roles in Europe, using AI to score job matches and generate
+  tailored CVs and cover letters.
+
+  ---
+  What the Project Does:
+
+  1. Scrapes job postings from multiple sources (Remotive, Adzuna, LinkedIn, Greenhouse, Lever, company career sites)
+  2. AI Scores each job using LLM (Ollama free/local or Claude AI) based on your profile
+  3. Stores jobs in SQLite database (jobs.db)
+  4. Generates tailored CVs (.docx + .pdf) and cover letters (.txt) for top matches
+  5. Creates daily HTML reports with top job recommendations
+  6. Supports email notifications with daily digests
+
+  ---
+  Important Files & Their Purpose:
+
+  Configuration
+
+  ┌──────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │       File       │                                                  Purpose                                                   │
+  ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ config.yaml      │ Main config: search keywords (PE, M&A, Investment), locations (Luxembourg, Germany, etc.), LLM settings,   │
+  │                  │ scoring instructions tailored to your profile, company boards to scrape (KKR, Blackstone, etc.)            │
+  ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ config.py        │ Loads and caches config.yaml using lru_cache for performance                                               │
+  ├──────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ requirements.txt │ Python dependencies: anthropic (Claude API), ollama (local LLM), beautifulsoup4 (web scraping), pydantic,  │
+  │                  │ click, python-docx (CV generation), ddgs (DuckDuckGo search)                                               │
+  └──────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Entry Point & CLI
+
+  ┌────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │    File    │                                                     Purpose                                                      │
+  ├────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ main.py    │ Entry point that imports and runs the CLI                                                                        │
+  ├────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/cli.py │ Click-based CLI with commands: search, run, report, generate-cv <id>, generate-cl <id>, list-jobs, export-excel, │
+  │            │  schedule                                                                                                        │
+  └────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Core Agents
+
+  ┌────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │            File            │                                             Purpose                                              │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/agents/search_agent.py │ Main job discovery workflow: runs scrapers → deduplicates → LLM scores jobs in chunks → saves to │
+  │                            │  DB                                                                                              │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/agents/cv_agent.py     │ CV generation agent: loads your base CV → asks LLM for targeted paragraph edits → saves .docx +  │
+  │                            │ .pdf                                                                                             │
+  ├────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/agents/llm.py          │ LLM provider abstraction: supports anthropic (Claude) and ollama (free local models like gemma3, │
+  │                            │  llama3, phi3)                                                                                   │
+  └────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Scrapers
+
+  ┌────────────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────┐
+  │              File              │                                           Purpose                                            │
+  ├────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/scrapers/remotive.py       │ Scrapes remotive.com API for remote tech/data jobs                                           │
+  ├────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/scrapers/adzuna.py         │ Scrapes Adzuna job board                                                                     │
+  ├────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/scrapers/linkedin.py       │ Basic LinkedIn search scraper (limited due to API restrictions)                              │
+  ├────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/scrapers/company_boards.py │ Scrapes company career portals (Greenhouse, Lever for specific companies like Blackstone,    │
+  │                                │ KKR, Goldman Sachs)                                                                          │
+  ├────────────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/scrapers/web_search.py     │ Uses DuckDuckGo to search career sites                                                       │
+  └────────────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Database
+
+  ┌────────────────────────┬──────────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │          File          │                                               Purpose                                                │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/database/models.py │ Pydantic models: JobRaw (raw scrape), Job (scraped + scored), ScoredJob (LLM output with             │
+  │                        │ score/reason)                                                                                        │
+  ├────────────────────────┼──────────────────────────────────────────────────────────────────────────────────────────────────────┤
+  │ src/database/db.py     │ SQLite operations: init_db(), insert_job(), update_match_score(), get_jobs(), mark_cv_generated()    │
+  └────────────────────────┴──────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Reports
+
+  ┌──────────────────────────┬────────────────────────────────────────────────────────────────────────────┐
+  │           File           │                                  Purpose                                   │
+  ├──────────────────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ src/reports/generator.py │ Generates daily HTML report + prints terminal table; uses Jinja2 templates │
+  ├──────────────────────────┼────────────────────────────────────────────────────────────────────────────┤
+  │ src/reports/excel.py     │ Exports jobs to Excel with filters                                         │
+  └──────────────────────────┴────────────────────────────────────────────────────────────────────────────┘
+
+  ---
+  Outputs
+
+  ┌───────────────────────┬──────────────────────────────────────────────────┐
+  │       Location        │                     Contents                     │
+  ├───────────────────────┼──────────────────────────────────────────────────┤
+  │ output/cvs/           │ Tailored CVs: job_<id>_cv.docx + job_<id>_cv.pdf │
+  ├───────────────────────┼──────────────────────────────────────────────────┤
+  │ output/cover_letters/ │ Generated cover letters: job_<id>_cl.txt         │
+  ├───────────────────────┼──────────────────────────────────────────────────┤
+  │ output/reports/       │ Daily HTML reports                               │
+  ├───────────────────────┼──────────────────────────────────────────────────┤
+  │ jobs.db               │ SQLite database with all scraped jobs            │
+  └───────────────────────┴──────────────────────────────────────────────────┘
+
+  ---
+  Your Personalization:
+
+  - Search Keywords: PE, M&A, Investment Analyst, Deal Advisory, Corporate Development, etc.
+  - Target Locations: Luxembourg, Berlin, Frankfurt, Zurich, Brussels, Geneva
+  - LLM: Uses gemma3:1b by default (free local), or Claude API with key
+  - Scoring Instructions: Boost scores for PE/Finance roles, penalize pure Data Science roles
+  - Candidate Profile: Master's student in Business Analytics/Data Science, PE/VC club experience, Real Estate investment background
+
+  ---
+  How to Use:
+
+  # Install deps
+  pip install -r requirements.txt
+
+  # Run full pipeline (search → score → report → email)
+  python main.py run
+
+  # Just search
+  python main.py search
+
+  # Generate CV for job ID 5
+  python main.py generate-cv 5
+
+  # List high-scoring jobs
+  python main.py list-jobs --min-score 0.7
+
+  ---
