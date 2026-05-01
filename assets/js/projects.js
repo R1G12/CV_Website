@@ -12,7 +12,7 @@ const projects = [
     images: [
       "assets/images/Projects/Financial Statements Analysis/Aperam_anual_report.png",
       "assets/images/Projects/Financial Statements Analysis/Investment Memo.png",
-      "assets/images/Projects/Financial Statements Analysis/Ratios.png.png"
+      "assets/images/Projects/Financial Statements Analysis/Ratios.png"
     ],
     github: "",
     live: ""
