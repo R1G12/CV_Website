@@ -6,6 +6,18 @@
 
 const projects = [
   {
+    title: "Financial Statements Analysis",
+    description: "Personal project on the 3 Financial statements with Ratios of Aperam taken from its annual reports.",
+    tags: ["Finance", "Ratios", "Analysis", "Excel"],
+    images: [
+      "assets/images/Projects/Financial Statements Analysis/Aperam_anual_report.png",
+      "assets/images/Projects/Financial Statements Analysis/Investment Memo.png",
+      "assets/images/Projects/Financial Statements Analysis/Ratios.png.png"
+    ],
+    github: "",
+    live: ""
+  },
+  {
     title: "Corporate Finance Fundamentals",
     description: "Deep dive into valuation, capital structure, and financial decision-making.",
     tags: ["Finance", "Valuation", "Excel"],
@@ -13,16 +25,6 @@ const projects = [
       "assets/images/Projects/Corporate Finance Fundamentals/Corporate Finance Fundamentals - page-1.jpg",
       "assets/images/Projects/Corporate Finance Fundamentals/Corporate Finance Fundamentals - page-2.jpg",
       "assets/images/Projects/Corporate Finance Fundamentals/Excel Worksheet.png"
-    ],
-    github: "",
-    live: ""
-  },
-  {
-    title: "Evaluating a Manufacturing Process",
-    description: "Statistical analysis and optimization of manufacturing workflows.",
-    tags: ["Analytics", "Optimization"],
-    images: [
-      "assets/images/Projects/Evaluating a manufacturing process/Evaluating a manufacturing process.jpg"
     ],
     github: "",
     live: ""
@@ -38,12 +40,35 @@ const projects = [
     live: ""
   },
   {
+    title: "Evaluating a Manufacturing Process",
+    description: "Statistical analysis and optimization of manufacturing workflows.",
+    tags: ["Analytics", "Optimization"],
+    images: [
+      "assets/images/Projects/Evaluating a manufacturing process/Evaluating a manufacturing process.jpg"
+    ],
+    github: "",
+    live: ""
+  },
+  {
     title: "PowerBI Sales Analysis",
     description: "Interactive dashboards and sales performance tracking.",
     tags: ["PowerBI", "Data Viz"],
     images: [
       "assets/images/Projects/PowerBI Sales analysis/Capture d'écran 2026-03-11 131942.png",
       "assets/images/Projects/PowerBI Sales analysis/Capture d'écran 2026-03-11 131956.png"
+    ],
+    github: "",
+    live: ""
+  },
+  {
+    title: "EV Forecast",
+    description: "Machine learning models with Macroeconomic outlook to overcome the lack of data.",
+    tags: ["Python", "ML", "EV", "Forecast"],
+    images: [
+      "assets/images/Projects/EV_Forecast/Website.png",
+      "assets/images/Projects/EV_Forecast/EV_Charging_Map.png",
+      "assets/images/Projects/EV_Forecast/Dashboard.png",
+      "assets/images/Projects/EV_Forecast/Forecast.png",
     ],
     github: "",
     live: ""
